@@ -1,0 +1,7 @@
+1. jsp
+
+2.Tomcat executes servlets, but here's the cool part: JSPs (JavaServer Pages) are actually converted into servlets by Tomcat behind the scenes
+https://chatgpt.com/share/67f7638d-8bac-8005-a8be-0c08da342c61
+
+
+2. mvc

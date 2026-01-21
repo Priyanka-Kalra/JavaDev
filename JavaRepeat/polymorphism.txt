@@ -1,0 +1,48 @@
+✅ Rules of Overloading
+
+1. Different parameter list is required (number or type of arguments).
+2. Return type alone does NOT matter.
+3. Can overload in the same class or subclass.
+4. Access modifiers can be different.
+5. Static methods can be overloaded (but not overridden).
+
+✅ Rules of Overriding
+
+1. Method signature must be same (name + parameter list).
+2. Return type must be the same or a covariant return type (subclass of original return type).
+3. Access modifier:Cannot be more restrictive than parent.
+   Example: public in parent → cannot be protected or private in child.
+4. Checked exceptions:Child method cannot throw broader or new checked exceptions.
+   It can throw fewer or narrower ones.
+5. Static methods cannot be overridden → they are hidden instead.
+6. Final methods cannot be overridden.
+7. Constructors cannot be overridden (only inherited or overloaded).
+8. In overriding, return type must be the same OR a subclass of the parent return type.
+
+
+| Feature             | Overloading (Compile-time)                        | Overriding (Runtime)                              |
+| ------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| **Definition**      | Same method name, different parameter list        | Same method name, same signature in subclass      |
+| **Polymorphism**    | Compile-time polymorphism                         | Runtime polymorphism                              |
+| **Return type**     | Can be different, but not the only differentiator | Must be same or covariant return type             |
+| **Access modifier** | Can be anything                                   | Cannot be more restrictive than parent            |
+| **Exceptions**      | Both checked/unchecked can differ freely          | Child cannot throw broader/new checked exceptions |
+| **Static methods**  | Can be overloaded                                 | Cannot be overridden (they are hidden)            |
+| **Final methods**   | Can be overloaded                                 | Cannot be overridden                              |
+| **Decided at**      | Compile time                                      | Runtime (based on actual object type)             |
+
+
+| Case / Feature         | **Overloading** ✅                                                   | **Overriding** ✅                                                                  |
+| ---------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **Definition**         | Same method name, **different parameter list** (number/type/order). | Same method name + parameter list (signature), different implementation in child. |
+| **Polymorphism Type**  | Compile-time (early binding).                                       | Runtime (dynamic method dispatch).                                                |
+| **Return Type**        | Can be different (but not the *only* difference).                   | Must be same OR covariant (subclass of parent’s return type).                     |
+| **Access Modifier**    | Can change freely.                                                  | Cannot be more restrictive than parent.                                           |
+| **Checked Exceptions** | No restriction.                                                     | Child cannot throw broader/new checked exceptions (can throw fewer/narrower).     |
+| **Static Methods**     | ✅ Can be overloaded.                                                | ❌ Cannot be overridden (they are *hidden*).                                       |
+| **Private Methods**    | ✅ Can be overloaded within same class.                              | ❌ Cannot be overridden (they are not inherited → method hiding).                  |
+| **Final Methods**      | ✅ Can be overloaded.                                                | ❌ Cannot be overridden.                                                           |
+| **Constructors**       | ✅ Can be overloaded.                                                | ❌ Cannot be overridden.                                                           |
+| **Abstract Methods**   | ❌ Not related.                                                      | ✅ Must be overridden in concrete subclass.                                        |
+| **Varargs**            | ✅ Can be overloaded with/without varargs.                           | ❌ Not applicable.                                                                 |
+| **When Decided**       | At compile time.                                                    | At runtime (depends on object type).                                              |

@@ -1,0 +1,5 @@
+1. creational design pattern which allows object creation without specifying which class to use
+
+Product: It is an interface or abstract class that defines the methods the product must implement.
+Concrete Products: The concrete classes that implement the Product interface.
+Factory: A class with a method that returns different concrete products based on input.

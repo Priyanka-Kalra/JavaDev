@@ -1,0 +1,11 @@
+🔹 StringBuilder and StringBuffer
+
+Useful when modifying strings a lot (because String is immutable).
+
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(" World");
+System.out.println(sb); // Output: Hello World
+
+
+StringBuilder – Faster, not thread-safe
+StringBuffer – Slower, but thread-safe

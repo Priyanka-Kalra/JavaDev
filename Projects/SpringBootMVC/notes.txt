@@ -1,0 +1,6 @@
+1. tomcat jasper
+2. jsp not suitable for sprinboot3++
+3. in mvc , m i.e model is object of data required to send from controller to view
+we use object and not some variable
+4.ModelAttribute
+https://chatgpt.com/share/67f7638d-8bac-8005-a8be-0c08da342c61

@@ -1,0 +1,10 @@
+https://chatgpt.com/share/67fd2d69-39f0-8005-8ceb-f92989de8ec6
+
+typecast the result from query like
+Optional<Type> s=rep....
+
+jpql-JPQL is the query language defined by JPA. It's used to write object-oriented queries (not raw SQL) to interact with your database using entity classes and their fields.
+
+     It looks similar to SQL but operates on Java entities, not directly on tables.
+
+query dsl- queries pre created for you, in java domain specific language

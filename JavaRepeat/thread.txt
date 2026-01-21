@@ -1,0 +1,11 @@
+Threads:
+https://www.geeksforgeeks.org/java-threads/
+https://www.geeksforgeeks.org/difference-between-thread-start-and-thread-run-in-java/
+
+Threads can be used by 2 methods:
+1. Implementing Runnable interface
+2. Extending Thread class
+
+run() vs start()
+start creates a new thread and which further invokes run()
+we can't call the start() method twice otherwise it will throw an IllegalStateException whereas run() method can be called multiple times as it is just a normal method calling.

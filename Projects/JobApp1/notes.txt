@@ -1,0 +1,12 @@
+@GetMapping("jobPost") by default will try to return jsp
+
+so use
+@GetMapping("jobPost")
+@ResponseBody
+
+
+or just use @RestController
+
+@CrossOrigin(origins = "http://localhost:3000/")
+
+@PathVariable

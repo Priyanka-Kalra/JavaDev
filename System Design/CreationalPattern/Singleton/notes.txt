@@ -1,0 +1,9 @@
+The Singleton Pattern ensures that a class has only one instance and provides a global point of access to that instance.
+
+1. Eager Loading and lazy loading
+2. For thread safety in lazy loading:
+    -Synchronized Method
+    -Double-Checked Locking-basically putting lock(using synchronised) after verifying if its the first instance, uses volatile
+    -Bill Pugh Singleton (Best Practice for Lazy Loading)
+
+The volatile keyword in Java is a variable modifier that ensures visibility of changes to a variable across multiple threads.

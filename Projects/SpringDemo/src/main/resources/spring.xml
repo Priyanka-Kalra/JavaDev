@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--    <bean id="alien" class="com.springDemo.Alien" scope="prototype"/>-->
+
+<!--    Dependency injection-setter injection-->
+    <bean id="alien" class="com.springDemo.Alien">
+<!--        value for primitve value, ref for another object-->
+<!--        here we passing the same laptop's object in ref as the one created during ioc container initialisation-->
+        <property name="age" value="21"/>
+        <property name="comp" ref="lap2"/>
+
+<!--        Constructor injection, use index to specify which parameter in case there are multiple arguments or use name-->
+<!--        <constructor-arg name="marks" value="36"/>-->
+        <constructor-arg index="0" value="36"/>
+
+
+<!--        Inner Bean-->
+<!--        <property name="comp">-->
+<!--            <bean id="lap1" class="com.springDemo.Laptop"/>-->
+<!--        </property>-->
+    </bean>
+
+    <bean id="lap1" class="com.springDemo.Laptop"/>
+    <bean id="lap2" class="com.springDemo.Desktop"/>
+
+
+</beans>
+
+<!--        https://chatgpt.com/share/67680890-a5e4-8005-8e87-b9c60d1257c5-->
