@@ -1,5 +1,3 @@
-//so for n options, we may have to create 2^n classes for each combo
-
 public class Main{
 
     public static void main(String args[]){
