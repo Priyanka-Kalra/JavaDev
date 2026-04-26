@@ -1,0 +1,18 @@
+https://www.geeksforgeeks.org/java/service-discovery-and-service-registry-in-microservices/
+
+Key Differences and Relationship:
+    Service Discovery ("Where are they?"): Maintains a real-time database (registry) of available service endpoints, updating when instances are created or destroyed.
+    Load Balancing ("Who should handle this?"): Distributes incoming traffic across available service instances to prevent congestion and ensure high availability.
+
+Key Concepts and Tools:
+    Service Registry: A central database (e.g., Consul, Etcd, Zookeeper) that stores the network locations of service instances.
+    Client-Side Discovery: The client queries the registry directly and picks an instance (e.g., Netflix Eureka/Ribbon).
+    Server-Side Discovery: The client sends requests to a load balancer (e.g., Nginx, AWS ALB), which queries the registry and routes the request (e.g., Kubernetes service).
+    Health Checks: Both systems use health checks to remove dead or overloaded instances from the load balancer rotation.
+
+https://medium.com/@pratikpatel17791/what-is-eureka-server-client-in-springboot-microservices-105f02734833
+
+https://medium.com/@aissatoub4228/building-resilient-microservices-with-spring-boot-and-spring-cloud-mastering-fault-tolerance-65e138a759b0
+
+Circuit breaker design pattern
+https://chatgpt.com/share/69e99348-df84-8320-8c51-0ee8838382f6
