@@ -28,15 +28,15 @@ public class CitizenController {
         return new ResponseEntity<>(citizen,HttpStatus.OK);
     }
 
-//    @GetMapping("/vaccination-center/{id}")
-//    public ResponseEntity<List<Citizen>> findByVaccinationCentreId(@PathVariable Integer id){
-//
-//        List<Citizen> listCitizen=service.findByVaccinationCenterId(id);
-//        return  listCitizen.isEmpty() ?new ResponseEntity<>(HttpStatus.NO_CONTENT): new ResponseEntity<>(listCitizen,HttpStatus.OK);
-//    }
-
     @GetMapping("/vaccination-center/{id}")
-    public List<Citizen> getByCenterId(@PathVariable Integer id) {
-        throw new RuntimeException("Simulated failure");
+    public ResponseEntity<List<Citizen>> findByVaccinationCentreId(@PathVariable Integer id){
+
+        List<Citizen> listCitizen=service.findByVaccinationCenterId(id);
+        return  listCitizen.isEmpty() ?new ResponseEntity<>(HttpStatus.NO_CONTENT): new ResponseEntity<>(listCitizen,HttpStatus.OK);
     }
+
+//    @GetMapping("/vaccination-center/{id}")
+//    public List<Citizen> getByCenterId(@PathVariable Integer id) {
+//        throw new RuntimeException("Simulated failure");
+//    }
 }

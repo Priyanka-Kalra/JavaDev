@@ -56,6 +56,7 @@ public class VaccinationCenterService {
         VaccinationCenter center=this.findById(id).orElse(null);
         reqResponse.setVaccinationCenter(center);
 
+        //citizen associated with center
         List<Citizen> citizenList = citizenClientService.getCitizensFromService(id);
         reqResponse.setCitizens(citizenList);
 
