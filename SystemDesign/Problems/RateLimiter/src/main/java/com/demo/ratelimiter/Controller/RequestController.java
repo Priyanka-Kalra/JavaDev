@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 @RestController
 @RequestMapping("/api/v1/request")
@@ -32,22 +35,37 @@ public class RequestController {
 
         try{
 
+//            User user=userService.getOrCreateUser(id);
+//            List<ResponseStructure> response=new ArrayList<>();
+//
+//            for(int ind=0;ind<100;ind++){
+//                boolean isAllowed=rateLimitService.isAllowed(user);
+//
+//
+//                if(!isAllowed)response.add(new ResponseStructure("Try Again Later, Reached ,max number of tries",isAllowed));
+//                else response.add(new  ResponseStructure("Redirection success",isAllowed));
+//            }
+
+
             User user=userService.getOrCreateUser(id);
-            List<ResponseStructure> response=new ArrayList<>();
 
+            ExecutorService executorService= Executors.newFixedThreadPool(10);
+            List<Future<ResponseStructure>> futures=new ArrayList<>();
             for(int ind=0;ind<100;ind++){
-                boolean isAllowed=rateLimitService.isAllowed(user);
+                futures.add(executorService.submit(()->{
+                    System.out.println("Request with thread: "+Thread.currentThread().getName());
+                    boolean isAllowed=rateLimitService.isAllowed(user);
+                    if(!isAllowed)return new ResponseStructure("Try Again Later, Reached ,max number of tries",isAllowed);
+                    else return new  ResponseStructure("Redirection success",isAllowed);
 
-
-                if(!isAllowed)response.add(new ResponseStructure("Try Again Later, Reached ,max number of tries",isAllowed));
-                else response.add(new  ResponseStructure("Redirection success",isAllowed));
+                }));
             }
-//            boolean isAllowed=rateLimitService.isAllowed(user);
-//
-//
-//            if(!isAllowed)return new ResponseStructure("Try Again Later, Reached ,max number of tries",isAllowed);
-//            else return new ResponseStructure("Redirection success",isAllowed);
 
+            List<ResponseStructure> response=new ArrayList<>();
+            for(Future<ResponseStructure> future:futures){
+                ResponseStructure responseStructure=future.get();
+                response.add(responseStructure);
+            }
             return response;
 
 
