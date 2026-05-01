@@ -1,0 +1,73 @@
+package com.demo.ratelimiter.Controller;
+
+
+import com.demo.ratelimiter.Model.User;
+import com.demo.ratelimiter.Service.RateLimitService;
+import com.demo.ratelimiter.Service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/api/v1/request")
+public class RequestController {
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private RateLimitService rateLimitService;
+
+
+
+    @GetMapping("/{id}")
+    public ResponseStructure request(@PathVariable UUID id){
+
+        try{
+
+            User user=userService.getOrCreateUser(id);
+
+            boolean isAllowed=rateLimitService.isAllowed(user);
+
+            if(!isAllowed)return new ResponseStructure("Try Again Later, Reached ,max number of tries",isAllowed);
+            else return new ResponseStructure("Redirection success",isAllowed);
+        }
+        catch(Exception e){
+            return new ResponseStructure("Try Again Later, Server Error Encountered",false);
+        }
+
+
+    }
+
+    public static class ResponseStructure{
+
+        private String message;
+        private boolean redirect;
+
+        public ResponseStructure(String message, boolean redirect) {
+            this.message = message;
+            this.redirect = redirect;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+
+        public boolean isRedirect() {
+            return redirect;
+        }
+
+        public void setRedirect(boolean redirect) {
+            this.redirect = redirect;
+        }
+    }
+}
