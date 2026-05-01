@@ -1,6 +1,6 @@
 package com.demo.ratelimiter.Service;
 
-import com.demo.ratelimiter.Factory.RateLimitFactory;
+//import com.demo.ratelimiter.Factory.RateLimitFactory;
 import com.demo.ratelimiter.Interface.RateLimiter;
 import com.demo.ratelimiter.Model.RateLimit;
 import com.demo.ratelimiter.Model.User;
@@ -14,8 +14,8 @@ import java.time.LocalTime;
 @Service
 public class RateLimitService {
 
-    @Autowired
-    private RateLimitFactory rateLimitFactory;
+//    @Autowired
+//    private RateLimitFactory rateLimitFactory;
 
     @Autowired
     private RateLimiterRepo rateLimiterRepo;

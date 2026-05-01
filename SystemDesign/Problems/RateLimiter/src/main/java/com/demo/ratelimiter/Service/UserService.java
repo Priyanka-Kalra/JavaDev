@@ -14,6 +14,7 @@ import java.util.UUID;
 public class UserService {
     @Autowired
     private UserRepo userRepo;
+    @Autowired
     private RateLimiterRepo rateLimiterRepo;
 
     public Optional<User> findUser(UUID id) {

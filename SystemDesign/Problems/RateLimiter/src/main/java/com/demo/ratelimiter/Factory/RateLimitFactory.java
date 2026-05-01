@@ -1,24 +1,22 @@
-package com.demo.ratelimiter.Factory;
-
-import com.demo.ratelimiter.Interface.RateLimiter;
-import com.demo.ratelimiter.Interface.TierFactory;
-import com.demo.ratelimiter.Model.RateLimit;
-import com.demo.ratelimiter.Model.User;
-import com.demo.ratelimiter.Repository.StrategySelector;
-import com.demo.ratelimiter.Service.RateLimitService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
-
-@Component
-public class RateLimitFactory {
-
-    @Autowired
-    private RateLimitService rateLimitService;
-
-    public RateLimiter generateRateLimiter(User.TierType tier, RateLimit usage){
+//package com.demo.ratelimiter.Factory;
+//
+//import com.demo.ratelimiter.Interface.RateLimiter;
+//import com.demo.ratelimiter.Model.RateLimit;
+//import com.demo.ratelimiter.Model.User;
+//import com.demo.ratelimiter.Service.RateLimitService;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Component;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//@Component
+//public class RateLimitFactory {
+//
+//    @Autowired
+//    private RateLimitService rateLimitService;
+//
+//    public RateLimiter generateRateLimiter(User.TierType tier, RateLimit usage){
 //
 //        TierFactory tierFactory;
 //        switch (tier){
@@ -31,7 +29,7 @@ public class RateLimitFactory {
 //                break;
 //        }
 //        return tierFactory.generateRateLimiter(usage);
-
-
-    }
-}
+//
+//
+//    }
+//}

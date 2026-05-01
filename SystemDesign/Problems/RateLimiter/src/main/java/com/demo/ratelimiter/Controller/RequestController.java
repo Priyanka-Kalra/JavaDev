@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -26,19 +28,34 @@ public class RequestController {
 
 
     @GetMapping("/{id}")
-    public ResponseStructure request(@PathVariable UUID id){
+    public List<ResponseStructure> request(@PathVariable UUID id){
 
         try{
 
             User user=userService.getOrCreateUser(id);
+            List<ResponseStructure> response=new ArrayList<>();
 
-            boolean isAllowed=rateLimitService.isAllowed(user);
+            for(int ind=0;ind<100;ind++){
+                boolean isAllowed=rateLimitService.isAllowed(user);
 
-            if(!isAllowed)return new ResponseStructure("Try Again Later, Reached ,max number of tries",isAllowed);
-            else return new ResponseStructure("Redirection success",isAllowed);
+
+                if(!isAllowed)response.add(new ResponseStructure("Try Again Later, Reached ,max number of tries",isAllowed));
+                else response.add(new  ResponseStructure("Redirection success",isAllowed));
+            }
+//            boolean isAllowed=rateLimitService.isAllowed(user);
+//
+//
+//            if(!isAllowed)return new ResponseStructure("Try Again Later, Reached ,max number of tries",isAllowed);
+//            else return new ResponseStructure("Redirection success",isAllowed);
+
+            return response;
+
+
         }
         catch(Exception e){
-            return new ResponseStructure("Try Again Later, Server Error Encountered",false);
+            List<ResponseStructure> response=new ArrayList<>();
+            response.add(new ResponseStructure(e.getMessage(),true));
+            return response;
         }
 
 

@@ -3,11 +3,13 @@ package com.demo.ratelimiter.Repository;
 import com.demo.ratelimiter.Interface.RateLimiter;
 import com.demo.ratelimiter.Model.RateLimit;
 import com.demo.ratelimiter.Model.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Repository
 public class RateLimiterRepo {
 
     private Map<UUID, RateLimit> rateLimiterMap=new ConcurrentHashMap<>();
