@@ -16,3 +16,8 @@ https://medium.com/@aissatoub4228/building-resilient-microservices-with-spring-b
 
 Circuit breaker design pattern
 https://chatgpt.com/share/69e99348-df84-8320-8c51-0ee8838382f6
+
+
+
+
+https://medium.com/@ruwansriw/apache-kafka-terminology-f0b5350c26e4
