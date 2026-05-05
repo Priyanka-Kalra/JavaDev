@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: APIGateway
+
+
+  cloud:
+    gateway:
+      routes:
+        - id: BOOKINGSERVICE
+          uri: lb://BOOKINGSERVICE
+          predicates:
+            - Path=/book/**
+
+        - id: PAYMENTSERVICE
+          uri: lb://PAYMENTSERVICE
+          predicates:
+            - Path=/payment/**
+
+        - id: SEATSERVICE
+          uri: lb://SEATSERVICE
+          predicates:
+            - Path=/seat/**
