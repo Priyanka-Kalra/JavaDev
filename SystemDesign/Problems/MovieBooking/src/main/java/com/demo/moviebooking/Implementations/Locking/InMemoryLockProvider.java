@@ -43,15 +43,17 @@ public class InMemoryLockProvider implements LockProvider {
     @Override
     public boolean lock(UUID userId,String key, Long ttlMs){
         Long now=System.currentTimeMillis();
-        Expiry expiry=new Expiry(now+ttlMs,userId);
 
+        boolean[] acquired= {false};
+        expiryMap.compute(key,(key,existing)->{
+            if(existing!=null && existing.getDeadline()>now)return existing;
+            else{
+                acquired[0]=true;
+                return new Expiry(now+ttlMs,userId);
+            }
+        });
 
-        Expiry oldExpiry=expiryMap.get(key);
-        if(oldExpiry!=null && oldExpiry.getDeadline()>=now)return false;
-
-        //either expired or not there
-        expiryMap.put(key,expiry);
-        return true;
+        return acquired[0];
     }
     @Override
     public boolean unlock(String key){

@@ -40,7 +40,7 @@ public class PaymentService {
             throw new IllegalStateException("Payment Failed, please choose another method");
 
         }
-        booking.setBookingStatus(BookingStatus.CREATED);
+        booking.setBookingStatus(BookingStatus.CONFIRMED);
         seatService.updateSeats(booking.getSeats(), SeatStatus.BOOKED);
         bookingService.save(booking);
         return true;

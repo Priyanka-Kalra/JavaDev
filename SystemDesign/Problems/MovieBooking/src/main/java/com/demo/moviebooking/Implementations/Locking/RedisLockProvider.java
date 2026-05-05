@@ -32,7 +32,7 @@ public class RedisLockProvider implements LockProvider {
     private Map<String, InMemoryLockProvider.Expiry> expiryMap = new ConcurrentHashMap<>();//key,expiry
     private final ScheduledExecutorService scheduledService = Executors.newScheduledThreadPool(1);
 
-    public InMemoryLockProvider(){
+    public RedisLockProvider(){
         scheduledService.scheduleAtFixedRate(()->this.sweep(),1,1, TimeUnit.MINUTES);
     }
 
