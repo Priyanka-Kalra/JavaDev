@@ -34,6 +34,7 @@ public class ProcessService {
         paySlipService = new PaySlipService(paySlipRepo);
         paymentRepo = new PaymentRepo();
         paymentService = new PaymentService(paymentRepo);
+        this.employeService = employeService;
     }
 
     public void processEmployess(List<Employe> employes) {

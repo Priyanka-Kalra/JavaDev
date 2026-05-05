@@ -12,57 +12,27 @@ public class Employe {
     private final UUID empId;
     private final String empName;
     private String department;
-    private double baseSalary;
-    private List<PaySlip> salarySlips;
-    private String bankDetails;
     private EmployeCategory employeCategory;
     private int workingDays;
     private int leaves;
     private Country country;
+    private SalaryStructure salaryStructure;
+    private BankDetails bankDetails;
+    private List<PaySlip> paySlips;
 
-    public int getWorkingDays() {
-        return workingDays;
-    }
 
-    public void setWorkingDays(int workingDays) {
-        this.workingDays = workingDays;
-    }
 
-    public int getLeaves() {
-        return leaves;
-    }
-
-    public void setLeaves(int leaves) {
-        this.leaves = leaves;
-    }
-
-    public Employe(String empName, String department, double baseSalary, String bankDetails, EmployeCategory employeCategory, int workingDays, int leaves, Country country) {
+    public Employe(String empName, String department, EmployeCategory employeCategory, int workingDays, int leaves, Country country, SalaryStructure salaryStructure, BankDetails bankDetails) {
         this.empId = UUID.randomUUID();
         this.empName = empName;
         this.department = department;
-        this.baseSalary = baseSalary;
-        this.salarySlips = new ArrayList<>();
-        this.bankDetails = bankDetails;
         this.employeCategory = employeCategory;
         this.workingDays = workingDays;
         this.leaves = leaves;
         this.country = country;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
-
-    public EmployeCategory getEmployeCategory() {
-        return employeCategory;
-    }
-
-    public void setEmployeCategory(EmployeCategory employeCategory) {
-        this.employeCategory = employeCategory;
+        this.salaryStructure = salaryStructure;
+        this.bankDetails = bankDetails;
+        this.paySlips = new ArrayList<>();
     }
 
     public UUID getEmpId() {
@@ -81,27 +51,59 @@ public class Employe {
         this.department = department;
     }
 
-    public double getBaseSalary() {
-        return baseSalary;
+    public EmployeCategory getEmployeCategory() {
+        return employeCategory;
     }
 
-    public void setBaseSalary(double baseSalary) {
-        this.baseSalary = baseSalary;
+    public void setEmployeCategory(EmployeCategory employeCategory) {
+        this.employeCategory = employeCategory;
     }
 
-    public List<PaySlip> getSalarySlips() {
-        return salarySlips;
+    public int getWorkingDays() {
+        return workingDays;
     }
 
-    public void setSalarySlips(List<PaySlip> salarySlips) {
-        this.salarySlips = salarySlips;
+    public void setWorkingDays(int workingDays) {
+        this.workingDays = workingDays;
     }
 
-    public String getBankDetails() {
+    public int getLeaves() {
+        return leaves;
+    }
+
+    public void setLeaves(int leaves) {
+        this.leaves = leaves;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public SalaryStructure getSalaryStructure() {
+        return salaryStructure;
+    }
+
+    public void setSalaryStructure(SalaryStructure salaryStructure) {
+        this.salaryStructure = salaryStructure;
+    }
+
+    public BankDetails getBankDetails() {
         return bankDetails;
     }
 
-    public void setBankDetails(String bankDetails) {
+    public void setBankDetails(BankDetails bankDetails) {
         this.bankDetails = bankDetails;
+    }
+
+    public List<PaySlip> getPaySlips() {
+        return paySlips;
+    }
+
+    public void setPaySlips(List<PaySlip> paySlips) {
+        this.paySlips = paySlips;
     }
 }

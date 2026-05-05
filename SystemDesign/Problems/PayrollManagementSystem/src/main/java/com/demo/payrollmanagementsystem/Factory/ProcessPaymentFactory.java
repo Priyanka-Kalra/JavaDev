@@ -1,5 +1,6 @@
 package com.demo.payrollmanagementsystem.Factory;
 
+import com.demo.payrollmanagementsystem.Enums.Country;
 import com.demo.payrollmanagementsystem.Implementation.Process.IndiaProcessPayment;
 import com.demo.payrollmanagementsystem.Implementation.Process.USAProcessPayment;
 import com.demo.payrollmanagementsystem.Interface.ProcessPayment;
@@ -9,7 +10,7 @@ public class ProcessPaymentFactory {
 
     public ProcessPayment generateProcessPayment(Employe emp){
 
-        if(emp.getCountry().equals("INDIA"))return new IndiaProcessPayment;
-        else return new USAProcessPayment;
+        if(emp.getCountry().equals(Country.INDIA))return new IndiaProcessPayment();
+        else return new USAProcessPayment();
     }
 }

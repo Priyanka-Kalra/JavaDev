@@ -13,7 +13,7 @@ public class Payment {
     public Payment(PaySlip paySlip) {
         this.paymentId = UUID.randomUUID();
         this.paySlip = paySlip;
-        this.paymentStatus = paymentStatus;
+        this.paymentStatus = PaymentStatus.PENDING;
     }
 
     public UUID getPaymentId() {

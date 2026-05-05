@@ -22,7 +22,7 @@ public class EmployeRepo {
     }
 
     public void addPayslip(Employe emp, PaySlip payslip) {
-        List<PaySlip> paySlipList=emp.getSalarySlips();
+        List<PaySlip> paySlipList=emp.getPaySlips();
         paySlipList.add(payslip);
         employeMap.put(emp.getEmpId(), emp);
     }

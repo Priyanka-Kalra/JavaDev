@@ -3,30 +3,37 @@ package com.demo.payrollmanagementsystem.Model;
 import com.demo.payrollmanagementsystem.Enums.PaymentStatus;
 import com.demo.payrollmanagementsystem.Interface.PaymentMethod;
 
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.UUID;
 
 public class PaySlip {
 
     private final UUID paySlipId;
-    private final Employe employe;
+    private final UUID employeId;
     private PaymentMethod paymentMethod;
     private Double netSalary;
     private PaymentStatus paymentStatus;
+    private final Month month;
 
-    public PaySlip(Employe employe, PaymentMethod paymentMethod, Double netSalary) {
+    public PaySlip(UUID employeId, PaymentMethod paymentMethod, Double netSalary) {
         this.paySlipId = UUID.randomUUID();
-        this.employe = employe;
+        this.employeId = employeId;
         this.paymentMethod = paymentMethod;
         this.netSalary = netSalary;
         this.paymentStatus = PaymentStatus.NOT_INITIALIZED;
+        this.month = LocalDateTime.now().getMonth();
     }
 
+    public Month getMonth() {
+        return month;
+    }
     public UUID getPaySlipId() {
         return paySlipId;
     }
 
-    public Employe getEmploye() {
-        return employe;
+    public UUID getEmployeId() {
+        return employeId;
     }
 
     public PaymentMethod getPaymentMethod() {

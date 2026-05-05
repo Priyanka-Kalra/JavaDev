@@ -2,8 +2,10 @@ package com.demo.payrollmanagementsystem.Service;
 
 import com.demo.payrollmanagementsystem.Enums.Country;
 import com.demo.payrollmanagementsystem.Enums.EmployeCategory;
+import com.demo.payrollmanagementsystem.Model.BankDetails;
 import com.demo.payrollmanagementsystem.Model.Employe;
 import com.demo.payrollmanagementsystem.Model.PaySlip;
+import com.demo.payrollmanagementsystem.Model.SalaryStructure;
 import com.demo.payrollmanagementsystem.Repository.EmployeRepo;
 
 import java.util.List;
@@ -15,8 +17,8 @@ public class EmployeService {
         this.employeRepo = employeRepo;
     }
 
-    public Employe createUser(String name, String dept, double baseSalary, String bankDetails, EmployeCategory category, int workingDays, int leaves, Country country) {
-        Employe emp= new Employe(name,dept,baseSalary,bankDetails,category,workingDays,leaves, country);
+    public Employe createUser(String name, String dept, EmployeCategory category, int workingDays, int leaves, Country country, SalaryStructure salaryStructure, BankDetails bankDetails) {
+        Employe emp=new Employe(name,dept,category,workingDays,leaves,country,salaryStructure,bankDetails);
         employeRepo.save(emp);
         return emp;
     }

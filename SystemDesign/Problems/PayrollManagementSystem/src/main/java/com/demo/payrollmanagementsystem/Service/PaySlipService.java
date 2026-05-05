@@ -13,7 +13,7 @@ public class PaySlipService {
     }
 
     public PaySlip generatePaySlip(Employe employe, PaymentMethod paymentMethod, Double netSalary) {
-        PaySlip paySlip = new PaySlip(employe, paymentMethod, netSalary);
+        PaySlip paySlip = new PaySlip(employe.getEmpId(), paymentMethod, netSalary);
         paySlipRepo.save(paySlip);
         return paySlip;
 
